@@ -21,7 +21,7 @@ for i in range(len(sys.argv)-1):
 	comp = tree.xpath('//div[@id="qwidget_pageheader"]/h1/text()')
 	if curr:
 		company = comp.pop(0)
-		companyShort = company[:-34]
+		companyShort = company[:-20]
 		price = curr.pop(0)
 		netchange = net.pop(0)
 		pctchange = pct.pop(0)
