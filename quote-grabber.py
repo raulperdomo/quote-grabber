@@ -25,4 +25,4 @@ for i in range(len(sys.argv)-1):
 		price = curr.pop(0)
 		netchange = net.pop(0)
 		pctchange = pct.pop(0)
-		print(companyShort + "\nPrice: " + price + "\nNet Change: " + netchange + "\nPercent Change: "+pctchange+"\n\n")
+		print("%s\nPrice: %s\nNet Change: %s\nPct Change: %s\n" % (companyShort, price, netchange, pctchange))
