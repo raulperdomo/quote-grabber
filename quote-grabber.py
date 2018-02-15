@@ -1,4 +1,13 @@
 #!/usr/bin/python
+#I found that all the python applications to pull stock market data from google
+#and YAHOO! were broken and there was no working replacement.
+
+#This script will take any arguments and pull the latest stock data for that symbol from nasdaq.com
+#it will not output anything if the symbol doesn't return anything. 
+
+#if there is any interest, I will reconfigure the application to return a python dictionary.
+
+
 from lxml import html 
 import requests
 import sys
@@ -6,7 +15,6 @@ for i in range(len(sys.argv)-1):
 	page = requests.get('https://www.nasdaq.com/symbol/'+sys.argv[(i+1)].lower())
 	tree = html.fromstring(page.content)
 
-	#price = tree.xpath('//div[@id="qwidget_lastsale"]/text()').pop(0)
 	curr = tree.xpath('//div[@id="qwidget_lastsale"]/text()')
 	net = tree.xpath('//div[@id="qwidget_netchange"]/text()')
 	pct = tree.xpath('//div[@id="qwidget_percent"]/text()')
