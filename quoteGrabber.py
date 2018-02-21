@@ -62,6 +62,7 @@ def pullData(ticker):
     page = requests.get('https://www.nasdaq.com/symbol/'+ticker.lower())
     tree = html.fromstring(page.content)
     return tree
+
 def getPrice(ticker):
     tree = pullData(ticker)
     curr = tree.xpath('//div[@id="qwidget_lastsale"]/text()')
@@ -91,19 +92,4 @@ def getAll(ticker):
     for i in gen:
         data[i] = gen[i]
     return data
-
-def testing():
-    if curr:
-        company = comp.pop(0)
-        companyShort = company[:-20]
-        price = curr.pop(0)
-        netchange = net.pop(0)
-        pctchange = pct.pop(0)
-        print("%s\nPrice: %s\nNet Change: %s\nPct Change: %s\n" % (companyShort, price, netchange, pctchange))
-		
-        value = []
-        for i in data[2::3]:
-            value.append(re.findall(r'[\d.,]+', i))
-        generalInfo(value)
-
 
